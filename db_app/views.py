@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -8,6 +7,11 @@ from db_app.db_cls import DB, db_obj
 def index(request):
     db_names = db_obj.get_dbs()
     return render(request, 'index.html', context={'db_names': db_names})
+
+
+def connect(request):
+
+    return render(request, 'connect.html', context={})
 
 
 def get_db_tablenames(request, db_name):
