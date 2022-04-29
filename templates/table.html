@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} index {% endblock %}
+
+{% block content %}
+    <table class="table">
+        {% if datas %}
+            <h3>Table Name = <span style="color: cornflowerblue">{{ table_name }}</span>, datas show as follow:</h3>
+            <form method="get" action="/{{ db_name }}/tables/{{ table_name }}/">
+                <span>Attr:</span>
+                <select name="attr">
+                    {% for key, value in datas.0.items %}
+                        <option value="{{ key }}">{{ key }}</option>
+                    {% endfor %}
+                </select>
+                <input name="search" placeholder="search">
+                <button type="submit">Search</button>
+                </div>
+            </form>
+
+
+            <br/>
+            <br/>
+            <br/>
+
+            <tr>
+                {% for key, value in datas.0.items %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+            </tr>            {% for row in datas %}
+            <tr>
+                {% for key, value in row.items %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+
+        {% else %}
+            <h3 style="color: cornflowerblue">There are no table data in table {{ table_name }}</h3>
+            <a href="/{{ db_name }}/tables/{{ table_name }}/"> Back </a>
+        {% endif %}
+
+
+    </table>
+
+
+{% endblock %}

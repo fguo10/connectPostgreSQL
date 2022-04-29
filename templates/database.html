@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} database {{ db_name }} {% endblock %}
+
+{% block content %}
+
+    <table class="table">
+        {% if table_names %}
+            <h3>Database = <span style="color: cornflowerblue">{{ db_name }}</span>, Tables show as follow:</h3>
+            <tr>
+                <th>Index</th>
+                <th>Table Name</th>
+            </tr>
+            {% for table in table_names %}
+                <tr>
+                    <td> {{ forloop.counter }} </td>
+                    <td><a href="/{{ db_name }}/tables/{{ table }}/">{{ table }}</a></td>
+                </tr>
+            {% endfor %}
+
+        {% else %}
+            <h3 style="color: cornflowerblue">There are no tables in database {{ db_name }}</h3>
+            <a href="/dbs/{{ db_name }}/"> Back </a>
+        {% endif %}
+    </table>
+{% endblock %}

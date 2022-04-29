@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} index {% endblock %}
+
+{% block content %}
+
+    <table class="table">
+        <h3>Databases Names</h3>
+        <tr>
+            <th>Index</th>
+            <th>Database Name</th>
+        </tr>
+        {% for db in db_names %}
+            <tr>
+                <td> {{ forloop.counter }} </td>
+                <td><a href="/dbs/{{ db }}/">{{ db }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}
